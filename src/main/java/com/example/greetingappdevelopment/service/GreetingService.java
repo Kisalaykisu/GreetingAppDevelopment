@@ -1,5 +1,6 @@
 package com.example.greetingappdevelopment.service;
 
+
 import com.example.greetingappdevelopment.model.Greeting;
 import com.example.greetingappdevelopment.repository.GreetingAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class GreetingService {
 
     }
 
-    public Greeting saveMessage(Greeting greeting) {
+    public String getData(Integer id) {
+        Greeting newGreeting=repo.getById(id);
+        return newGreeting.getContent();
     }
 }

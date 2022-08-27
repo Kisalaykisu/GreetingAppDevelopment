@@ -1,9 +1,6 @@
 package com.example.greetingappdevelopment.model;
 
 
-<<<<<<< HEAD
-public class User {
-=======
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,19 +10,12 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
->>>>>>> UC4_GreetingController_App
     private String fName;
     private String lName;
 
     public User() {
 
     }
-<<<<<<< HEAD
-    public User(User user) {
-        this.fName=user.fName;
-        this.lName=user.lName;
-    }
-=======
 
     public User(String fName,String lName) {
         super();
@@ -41,7 +31,6 @@ public class User {
 
 
 
->>>>>>> UC4_GreetingController_App
     public String getfName() {
         return fName;
     }
