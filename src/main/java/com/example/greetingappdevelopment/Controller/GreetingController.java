@@ -1,7 +1,4 @@
 package com.example.greetingappdevelopment.Controller;
-
-
-
 import com.example.greetingappdevelopment.model.Greeting;
 import com.example.greetingappdevelopment.model.User;
 import com.example.greetingappdevelopment.service.GreetingService;
@@ -11,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
-
 @RestController
 @RequestMapping("/web")
 public class GreetingController {

@@ -1,14 +1,19 @@
 package com.example.greetingappdevelopment.service;
 
+import com.example.greetingappdevelopment.model.Greeting;
+import com.example.greetingappdevelopment.repository.GreetingAppRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class GreetingService {
+    private static String template="Hello %s";
+    @Autowired
+    GreetingAppRepository repo;
     public String getMessage(){
         return "Hello World";
     }
-<<<<<<< HEAD
-=======
 
     public String getGreetingMessage(String fName, String lName) {
         return "Hello "+fName+""+lName;
@@ -17,5 +22,14 @@ public class GreetingService {
     public String postMessage(String fName,String lName) {
         return "Hello "+fName+""+lName;
     }
->>>>>>> UC3_GreetingController_App
+
+    public Greeting saveMessage(Greeting greeting) {
+        Greeting newGreeting=new Greeting(String.format(template,greeting.getContent()));
+        repo.save(newGreeting);
+        return newGreeting;
+
+    }
+
+    public Greeting saveMessage(Greeting greeting) {
+    }
 }
