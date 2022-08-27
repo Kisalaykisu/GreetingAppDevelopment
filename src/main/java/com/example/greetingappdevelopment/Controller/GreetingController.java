@@ -4,7 +4,6 @@ package com.example.greetingappdevelopment.Controller;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 import com.example.greetingappdevelopment.model.Greeting;
 import com.example.greetingappdevelopment.model.User;
 import com.example.greetingappdevelopment.service.GreetingService;
@@ -13,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/web")
@@ -57,6 +57,14 @@ public class GreetingController {
     @GetMapping("/findAllGreeting")
     public ResponseEntity<List<Greeting>> findAllGreeting(){
         return new ResponseEntity<List<Greeting>>((MultiValueMap<String, String>) greetingService.getAllData(),HttpStatus.OK);
+    }
+    @PutMapping("/editGreetingById/{id}")
+    public ResponseEntity<Greeting> editGreeting(@RequestParam String content,@PathVariable Integer id){
+        return new ResponseEntity<Greeting>(greetingService.editDataById(id,content),HttpStatus.OK);
+    }
+    @DeleteMapping("/deleteGreetingById/{od}")
+    public ResponseEntity<String> deleteGreetingById(@PathVariable Integer id){
+        return new ResponseEntity<String>(greetingService.deleteDataById(id),HttpStatus.OK);
     }
 
 }
