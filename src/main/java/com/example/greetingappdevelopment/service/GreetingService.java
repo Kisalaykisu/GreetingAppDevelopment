@@ -1,11 +1,11 @@
 package com.example.greetingappdevelopment.service;
 
-
 import com.example.greetingappdevelopment.model.Greeting;
 import com.example.greetingappdevelopment.repository.GreetingAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class GreetingService {
@@ -31,8 +31,13 @@ public class GreetingService {
 
     }
 
-    public String getData(Integer id) {
+    public String getDataById(Integer id) {
         Greeting newGreeting=repo.getById(id);
         return newGreeting.getContent();
+    }
+
+    public List<Greeting> getAllData() {
+        List<Greeting>list=repo.findAll();
+        return list;
     }
 }

@@ -1,15 +1,18 @@
 package com.example.greetingappdevelopment.Controller;
 
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+
 import com.example.greetingappdevelopment.model.Greeting;
 import com.example.greetingappdevelopment.model.User;
 import com.example.greetingappdevelopment.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping("/web")
@@ -47,9 +50,13 @@ public class GreetingController {
     public ResponseEntity<Greeting> saveGreeting(@RequestBody Greeting greeting){
         return new ResponseEntity<Greeting>(greetingService.saveMessage(greeting),HttpStatus.OK);
     }
-    @GetMapping("/findGreeting")
-    public ResponseEntity<String> findGreeting(@RequestParam Integer id){
-        return new ResponseEntity<String>(greetingService.getData(id),HttpStatus.OK);
+    @GetMapping("/findGreetingById")
+    public ResponseEntity<String> findGreetingById(@RequestParam Integer id){
+        return new ResponseEntity<String>(greetingService.getDataById(id),HttpStatus.OK);
+    }
+    @GetMapping("/findAllGreeting")
+    public ResponseEntity<List<Greeting>> findAllGreeting(){
+        return new ResponseEntity<List<Greeting>>((MultiValueMap<String, String>) greetingService.getAllData(),HttpStatus.OK);
     }
 
 }
